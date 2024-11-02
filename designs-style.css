@@ -1,0 +1,85 @@
+body{
+    background-color: #f8dcae!important;
+}
+.section-designs h2, .section-contact h2{
+    margin-top: 20px;
+    font-family: "Oswald", sans-serif;
+    font-style: normal;
+    font-size: 25px;
+    font-weight: 900;
+    color: #1d1d1d;
+}
+.section-contact h3{
+    font-size: 17px;
+    font-weight: 600;
+    color: #1d1d1d;
+    margin: 20px 20px;
+}
+
+.product, .review{
+    background-color: #ffffff;
+    width: 95%;
+    height: auto;
+    justify-content: left;
+    margin: 20px 0;
+}
+
+.product img{
+    width: 200px;
+    height: auto;
+    box-shadow: 5px 5px 15px rgba(246, 237, 237, 0.05);
+}
+.product .gallery-text{
+    margin-top: 10px;
+    color: #1d1d1d;
+    text-align: left;
+}
+.product-text h4, .review-text h4{
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: "Oswald", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    text-align: left;
+}
+.product-text h6,  .review-text h4{
+    font-size: 17px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.product, .review, .form{
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.product img {
+    max-width: 150px;
+    border-radius: 10px;
+}
+
+.form{
+    margin: 20px;
+    width: 90%;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+form{
+    margin-top: 25px!important;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 400;
+    color: #1d1d1d;
+    margin: 20px 20px;
+}
+
+.md-3{
+    margin-top: 20px!important;
+}
+
+form .btn-dark{
+    width: 100%;
+}
+
