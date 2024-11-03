@@ -179,6 +179,21 @@
                 </div>
             </center>
         </div>
+
+        <div class="design-card">
+            <center>
+                <div class="product">
+                    <img src="products/ikigai.png" class="product-image d-block w-100" alt="Abstract Cotton">
+                    <div class="product-text">
+                        <h4>Ikigai: The Purpose</h4>
+                        <h6>Description: Example Buyer</h6>
+                        <h6>Niche: Example Niche</h6>
+                        <h6>Created For: Example Niche</h6>
+                        <h6>Review: Example Review</h6>
+                    </div>
+                </div>
+            </center>
+        </div>
     </section>
 
     <!-- Footer Section -->
@@ -197,23 +212,67 @@
     </footer>
 
     <script>
-        // Lightbox functionality
+        // Create the lightbox and add it to the document
         const lightbox = document.createElement("div");
         lightbox.id = "lightbox";
         document.body.appendChild(lightbox);
 
-        document.querySelectorAll(".product").forEach(item => {
+        // Function to open the carousel in the lightbox
+        function openCarousel(mainImageSrc) {
+            lightbox.classList.add("active");
+
+            // Extract the base name of the main image file (e.g., "main-image" from "main-image.png")
+            const baseName = mainImageSrc.substring(0, mainImageSrc.lastIndexOf('.'));
+            const extension = mainImageSrc.substring(mainImageSrc.lastIndexOf('.'));
+
+            // Create paths for the images: -1 for the first slide, main image for the second, and +1 for the third
+            const images = [
+                `${baseName}-1${extension}`,    // First slide: Main image with -1 suffix
+                mainImageSrc,                   // Second slide: Main product image
+                `${baseName}+1${extension}`     // Third slide: Main image with +1 suffix
+            ];
+
+            // Create the carousel HTML structure with the images
+            lightbox.innerHTML = `
+                <div id="carouselExample" class="carousel slide">
+                    <center>
+                        <div class="carousel-inner">
+                            ${images.map((src, index) => `
+                                <div class="carousel-item ${index === 1 ? "active" : ""}">
+                                    <img src="${src}" class="d-block" alt="Product Image ${index + 1}">
+                                </div>
+                            `).join("")}
+                        </div>
+                    </center>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+                <center>
+                    <button type="button" id="lightbox-close" class="btn btn-outline-light">Close</button>
+                </center>
+            `;
+        }
+
+        // Click event for each product
+        document.querySelectorAll(".product").forEach((item) => {
             item.addEventListener("click", () => {
-                const img = item.querySelector("img"); // Find the image within the .gallery-item
-                if (img) {
-                    lightbox.classList.add("active");
-                    lightbox.innerHTML = `<img src="${img.src}">`;
-                }
+                const mainImageSrc = item.querySelector("img").src;
+                openCarousel(mainImageSrc);
             });
         });
 
-        lightbox.addEventListener("click", () => {
-            lightbox.classList.remove("active");
+        // Close the lightbox when clicking outside the carousel
+        lightbox.addEventListener("click", (e) => {
+            if (e.target.id === "lightbox-close") {
+                lightbox.classList.remove("active");
+            }
         });
     </script>
     <script src="script.js"></script>
